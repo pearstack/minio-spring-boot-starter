@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/HaoLi-Rainbow/minio-spring-boot-starter.svg)](https://jitpack.io/#HaoLi-Rainbow/minio-spring-boot-starter) [![](https://img.shields.io/badge/spring--boot-2.3.7.RELEASE-brightgreen)](https://img.shields.io/badge/spring--boot-2.3.7.RELEASE-brightgreen) ![](https://img.shields.io/badge/minio-7.1.0-brightgreen)
+[![](https://jitpack.io/v/com.gitee.pear-admin/minio-spring-boot-starter.svg)](https://jitpack.io/#com.gitee.pear-admin/minio-spring-boot-starter) [![](https://img.shields.io/badge/spring--boot-2.3.7.RELEASE-brightgreen)](https://img.shields.io/badge/spring--boot-2.3.7.RELEASE-brightgreen) ![](https://img.shields.io/badge/minio-7.1.0-brightgreen)
 
 
 
@@ -34,10 +34,10 @@ minio和springboot的整合项目, 让你快速上手, 方便使用
 
 
 ```xml
-    <dependency>
-        <groupId>com.github.HaoLi-Rainbow</groupId>
-        <artifactId>minio-spring-boot-starter</artifactId>
-        <version>Tag</version>
-    </dependency>
+	<dependency>
+	    <groupId>com.gitee.pear-admin</groupId>
+	    <artifactId>minio-spring-boot-starter</artifactId>
+	    <version>1.0.0</version>
+	</dependency>
 ```
 
