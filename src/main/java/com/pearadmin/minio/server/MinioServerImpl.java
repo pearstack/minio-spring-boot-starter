@@ -1,8 +1,8 @@
-package com.pearadmin.server;
+package com.pearadmin.minio.server;
 
 import cn.hutool.core.io.file.FileNameUtil;
 import cn.hutool.core.util.IdUtil;
-import com.pearadmin.properties.MinioProperties;
+import com.pearadmin.minio.MinioAutoProperties;
 import io.minio.*;
 import io.minio.messages.Bucket;
 import io.minio.messages.Item;
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,16 +19,19 @@ import java.util.List;
 import java.util.Optional;
 
 /**
+ * Minio server interface impl
+ *
  * @author lihao3
  * @date 2021/7/23 10:52
  */
 @Service
-public class MinioServerImpl implements IMinioServer {
+public class MinioServerImpl implements MinioServer {
 
-    @Autowired
+    @Resource
     private MinioClient minioClient;
-    @Autowired
-    private MinioProperties minioProperties;
+
+    @Resource
+    private MinioAutoProperties minioAutoProperties;
 
     @Override
     public Boolean bucketExists(String bucketName) {
@@ -54,8 +58,8 @@ public class MinioServerImpl implements IMinioServer {
         // 给文件名添加时间戳防止重复
         String fileName = getFileName(file.getOriginalFilename());
         // 开始上传
-        this.putMultipartFile(minioProperties.getBucket(), fileName, file);
-        return minioProperties.getUrl() + "/" + minioProperties.getBucket() + "/" + fileName;
+        this.putMultipartFile(minioAutoProperties.getBucket(), fileName, file);
+        return minioAutoProperties.getUrl() + "/" + minioAutoProperties.getBucket() + "/" + fileName;
     }
 
     @Override
@@ -63,8 +67,8 @@ public class MinioServerImpl implements IMinioServer {
         // 给文件名添加时间戳防止重复
         String fileName = getFileName(objectName);
         // 开始上传
-        this.putInputStream(minioProperties.getBucket(), fileName, inputStream, contentType);
-        return minioProperties.getUrl() + "/" + minioProperties.getBucket() + "/" + fileName;
+        this.putInputStream(minioAutoProperties.getBucket(), fileName, inputStream, contentType);
+        return minioAutoProperties.getUrl() + "/" + minioAutoProperties.getBucket() + "/" + fileName;
     }
 
     @Override
@@ -72,8 +76,8 @@ public class MinioServerImpl implements IMinioServer {
         // 给文件名添加时间戳防止重复
         String fileName = getFileName(objectName);
         // 开始上传
-        this.putBytes(minioProperties.getBucket(), fileName, bytes, contentType);
-        return minioProperties.getUrl() + "/" + minioProperties.getBucket() + "/" + fileName;
+        this.putBytes(minioAutoProperties.getBucket(), fileName, bytes, contentType);
+        return minioAutoProperties.getUrl() + "/" + minioAutoProperties.getBucket() + "/" + fileName;
     }
 
     @Override
@@ -81,8 +85,8 @@ public class MinioServerImpl implements IMinioServer {
         // 给文件名添加时间戳防止重复
         objectName = getFileName(objectName);
         // 开始上传
-        this.putMultipartFile(minioProperties.getBucket(), objectName, file);
-        return minioProperties.getUrl() + "/" + minioProperties.getBucket() + "/" + objectName;
+        this.putMultipartFile(minioAutoProperties.getBucket(), objectName, file);
+        return minioAutoProperties.getUrl() + "/" + minioAutoProperties.getBucket() + "/" + objectName;
     }
 
     @Override
@@ -93,7 +97,7 @@ public class MinioServerImpl implements IMinioServer {
         objectName = getFileName(objectName);
         // 开始上传
         this.putMultipartFile(bucketName, objectName, file);
-        return minioProperties.getUrl() + "/" + bucketName + "/" + objectName;
+        return minioAutoProperties.getUrl() + "/" + bucketName + "/" + objectName;
     }
 
     @Override
@@ -104,7 +108,7 @@ public class MinioServerImpl implements IMinioServer {
         String fileName = getFileName(objectName);
         // 开始上传
         this.putInputStream(bucketName, fileName, inputStream, contentType);
-        return minioProperties.getUrl() + "/" + bucketName + "/" + fileName;
+        return minioAutoProperties.getUrl() + "/" + bucketName + "/" + fileName;
     }
 
     @Override
@@ -115,17 +119,17 @@ public class MinioServerImpl implements IMinioServer {
         String fileName = getFileName(objectName);
         // 开始上传
         this.putBytes(bucketName, fileName, bytes, contentType);
-        return minioProperties.getUrl() + "/" + bucketName + "/" + fileName;
+        return minioAutoProperties.getUrl() + "/" + bucketName + "/" + fileName;
     }
 
     @Override
     public Boolean checkFileIsExist(String objectName) {
-        return this.checkFileIsExist(minioProperties.getBucket(), objectName);
+        return this.checkFileIsExist(minioAutoProperties.getBucket(), objectName);
     }
 
     @Override
     public Boolean checkFolderIsExist(String folderName) {
-        return this.checkFolderIsExist(minioProperties.getBucket(), folderName);
+        return this.checkFolderIsExist(minioAutoProperties.getBucket(), folderName);
     }
 
     @Override
@@ -148,7 +152,7 @@ public class MinioServerImpl implements IMinioServer {
             Iterable<Result<Item>> results = minioClient.listObjects(
                     ListObjectsArgs
                             .builder()
-                            .bucket(minioProperties.getBucket())
+                            .bucket(minioAutoProperties.getBucket())
                             .prefix(folderName).recursive(false).build());
             for (Result<Item> result : results) {
                 Item item = result.get();
@@ -164,7 +168,7 @@ public class MinioServerImpl implements IMinioServer {
 
     @Override
     public InputStream getObject(String objectName) {
-        return this.getObject(minioProperties.getBucket(), objectName);
+        return this.getObject(minioAutoProperties.getBucket(), objectName);
     }
 
     @Override
@@ -215,7 +219,7 @@ public class MinioServerImpl implements IMinioServer {
 
     @Override
     public void removeObject(String objectName) {
-        this.removeObject(minioProperties.getBucket(), objectName);
+        this.removeObject(minioAutoProperties.getBucket(), objectName);
     }
 
     @Override
@@ -278,7 +282,7 @@ public class MinioServerImpl implements IMinioServer {
     }
 
     /**
-     * 上传bytes通用方法
+     * 上传 bytes 通用方法
      *
      * @param bucketName 桶名称
      * @param objectName 文件名

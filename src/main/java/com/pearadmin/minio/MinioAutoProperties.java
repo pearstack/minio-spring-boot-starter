@@ -1,4 +1,4 @@
-package com.pearadmin.properties;
+package com.pearadmin.minio;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * minio 配置属性
+ * Minio 配置属性
  *
  * @author lihao3
  * @date 2021/7/23 9:58
@@ -15,20 +15,20 @@ import org.springframework.stereotype.Component;
 @Setter
 @Component
 @ConfigurationProperties(prefix = "minio")
-public class MinioProperties {
+public class MinioAutoProperties {
 
     /**
-     * minio的url
-     */
+     * 服务地址
+     * */
     private String url;
 
     /**
-     * 账号
+     * 认证账户
      */
     private String accessKey;
 
     /**
-     * 密码
+     * 认证密码
      */
     private String secretKey;
 

@@ -1,4 +1,4 @@
-package com.pearadmin.server;
+package com.pearadmin.minio.server;
 
 import io.minio.messages.Bucket;
 import org.springframework.web.multipart.MultipartFile;
@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * minio 接口层
+ * Minio server interface
  *
  * @author lihao3
  * @date 2021/7/23 10:23
  */
-public interface IMinioServer {
+public interface MinioServer {
 
     /**
      * 判断桶是否存在

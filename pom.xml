@@ -39,34 +39,28 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
-        <!-- minio 文件服务器 -->
         <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
             <version>${minio.version}</version>
         </dependency>
-
-        <!--工具类-->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-core</artifactId>
             <version>${hutool-all.version}</version>
         </dependency>
-
     </dependencies>
 
     <dependencyManagement>
@@ -81,7 +75,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <!-- 项目构建 -->
     <build>
         <plugins>
             <plugin>
