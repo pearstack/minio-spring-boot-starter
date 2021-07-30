@@ -6,7 +6,7 @@ import com.pearadmin.minio.MinioAutoProperties;
 import io.minio.*;
 import io.minio.messages.Bucket;
 import io.minio.messages.Item;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -24,6 +25,7 @@ import java.util.Optional;
  * @author lihao3
  * @date 2021/7/23 10:52
  */
+@Slf4j
 @Service
 public class MinioServerImpl implements MinioServer {
 
@@ -56,7 +58,7 @@ public class MinioServerImpl implements MinioServer {
     @Override
     public String putObject(MultipartFile file) {
         // 给文件名添加时间戳防止重复
-        String fileName = getFileName(file.getOriginalFilename());
+        String fileName = getFileName(Objects.requireNonNull(file.getOriginalFilename()));
         // 开始上传
         this.putMultipartFile(minioAutoProperties.getBucket(), fileName, file);
         return minioAutoProperties.getUrl() + "/" + minioAutoProperties.getBucket() + "/" + fileName;
