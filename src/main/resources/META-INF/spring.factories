@@ -1,3 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.pearadmin.minio.MinioAutoConfiguration,\
-com.pearadmin.minio.server.MinioServerImpl
+com.pearadmin.minio.MinioAutoConfiguration
