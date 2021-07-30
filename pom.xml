@@ -63,7 +63,7 @@
         <!--工具类-->
         <dependency>
             <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
+            <artifactId>hutool-core</artifactId>
             <version>${hutool-all.version}</version>
         </dependency>
 

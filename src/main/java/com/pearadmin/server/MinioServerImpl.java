@@ -1,5 +1,6 @@
 package com.pearadmin.server;
 
+import cn.hutool.core.io.file.FileNameUtil;
 import cn.hutool.core.util.IdUtil;
 import com.pearadmin.properties.MinioProperties;
 import io.minio.*;
@@ -310,8 +311,9 @@ public class MinioServerImpl implements IMinioServer {
         // 获取文件前缀,已最后一个点进行分割
         String filePrefix = objectName.substring(0, objectName.lastIndexOf("."));
         // 获取文件后缀,已最后一个点进行分割
-        String fileSuffix = objectName.substring(objectName.lastIndexOf("."));
+        String fileSuffix = FileNameUtil.getSuffix(objectName);
         // 组成唯一文件名
-        return String.format("%s_%s%s", filePrefix, IdUtil.objectId(), fileSuffix);
+        return String.format("%s_%s.%s", filePrefix, IdUtil.getSnowflake().nextId(), fileSuffix);
     }
+
 }
