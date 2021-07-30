@@ -1,7 +1,5 @@
 package com.pearadmin.minio;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -11,8 +9,6 @@ import org.springframework.stereotype.Component;
  * @author lihao3
  * @date 2021/7/23 9:58
  */
-@Getter
-@Setter
 @Component
 @ConfigurationProperties(prefix = "minio")
 public class MinioAutoProperties {
@@ -64,4 +60,76 @@ public class MinioAutoProperties {
      * HTTP读取超时，以毫秒为单位。
      */
     private long readTimeout;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getAccessKey() {
+        return accessKey;
+    }
+
+    public void setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
+    }
+
+    public String getSecretKey() {
+        return secretKey;
+    }
+
+    public void setSecretKey(String secretKey) {
+        this.secretKey = secretKey;
+    }
+
+    public String getBucket() {
+        return bucket;
+    }
+
+    public void setBucket(String bucket) {
+        this.bucket = bucket;
+    }
+
+    public boolean isCreateBucket() {
+        return createBucket;
+    }
+
+    public void setCreateBucket(boolean createBucket) {
+        this.createBucket = createBucket;
+    }
+
+    public boolean isCheckBucket() {
+        return checkBucket;
+    }
+
+    public void setCheckBucket(boolean checkBucket) {
+        this.checkBucket = checkBucket;
+    }
+
+    public long getConnectTimeout() {
+        return connectTimeout;
+    }
+
+    public void setConnectTimeout(long connectTimeout) {
+        this.connectTimeout = connectTimeout;
+    }
+
+    public long getWriteTimeout() {
+        return writeTimeout;
+    }
+
+    public void setWriteTimeout(long writeTimeout) {
+        this.writeTimeout = writeTimeout;
+    }
+
+    public long getReadTimeout() {
+        return readTimeout;
+    }
+
+    public void setReadTimeout(long readTimeout) {
+        this.readTimeout = readTimeout;
+    }
 }

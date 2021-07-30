@@ -17,7 +17,6 @@ import javax.annotation.Resource;
  * @author lihao3
  * @date 2021/7/23 10:28
  */
-@Slf4j
 @Configuration
 @ConditionalOnClass(MinioClient.class)
 @EnableConfigurationProperties(MinioAutoProperties.class)
