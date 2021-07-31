@@ -1,8 +1,11 @@
 package com.pearadmin.minio;
 
+import com.pearadmin.minio.server.MinioServerImpl;
 import io.minio.BucketExistsArgs;
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -21,12 +24,14 @@ import javax.annotation.Resource;
 @EnableConfigurationProperties(MinioAutoProperties.class)
 public class MinioAutoConfiguration {
 
+    private static final Logger log = LoggerFactory.getLogger(MinioAutoConfiguration.class);
+
     @Resource
     private MinioAutoProperties minioAutoProperties;
 
     @Bean
     public MinioClient minioClient() {
-
+        log.info("开始初始化MinioClient, url为{}, accessKey为:{}", minioAutoProperties.getUrl(), minioAutoProperties.getAccessKey());
         MinioClient minioClient = MinioClient
                 .builder()
                 .endpoint(minioAutoProperties.getUrl())
@@ -38,11 +43,11 @@ public class MinioAutoConfiguration {
                 minioAutoProperties.getWriteTimeout(),
                 minioAutoProperties.getReadTimeout()
         );
-
         // Start detection
         if (minioAutoProperties.isCheckBucket()) {
+            log.info("checkBucket为{}, 开始检测桶是否存在", minioAutoProperties.isCheckBucket());
             String bucketName = minioAutoProperties.getBucket();
-            if (!checkBucket(bucketName,minioClient)) {
+            if (!checkBucket(bucketName, minioClient)) {
                 if (minioAutoProperties.isCreateBucket()) {
                     createBucket(bucketName, minioClient);
                 }

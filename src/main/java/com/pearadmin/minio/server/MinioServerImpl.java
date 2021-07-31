@@ -6,7 +6,8 @@ import com.pearadmin.minio.MinioAutoProperties;
 import io.minio.*;
 import io.minio.messages.Bucket;
 import io.minio.messages.Item;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,9 +26,10 @@ import java.util.Optional;
  * @author lihao3
  * @date 2021/7/23 10:52
  */
-@Slf4j
 @Service
 public class MinioServerImpl implements MinioServer {
+
+    private static final Logger log = LoggerFactory.getLogger(MinioServerImpl.class);
 
     @Resource
     private MinioClient minioClient;

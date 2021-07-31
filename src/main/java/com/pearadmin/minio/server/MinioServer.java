@@ -19,7 +19,7 @@ public interface MinioServer {
      * 判断桶是否存在
      *
      * @param bucketName bucket名称
-     * @return
+     * @return true存在，false不存在
      */
     Boolean bucketExists(String bucketName);
 
@@ -136,32 +136,32 @@ public interface MinioServer {
     /**
      * 根据文件全路径获取文件流
      *
-     * @param objectName
-     * @return
+     * @param objectName 文件名称
+     * @return 文件流
      */
     InputStream getObject(String objectName);
 
     /**
      * 根据文件桶和文件全路径获取文件流
      *
-     * @param bucketName
-     * @param objectName
-     * @return
+     * @param bucketName 桶名称
+     * @param objectName 文件名
+     * @return 文件流
      */
     InputStream getObject(String bucketName, String objectName);
 
     /**
      * 根据url获取文件流
      *
-     * @param url
-     * @return
+     * @param url 文件对于URL
+     * @return 文件流
      */
     InputStream getObjectByUrl(String url);
 
     /**
      * 获取全部bucket
      *
-     * @return
+     * @return 所有桶信息
      */
     List<Bucket> getAllBuckets();
 
@@ -169,7 +169,7 @@ public interface MinioServer {
      * 根据bucketName获取信息
      *
      * @param bucketName bucket名称
-     * @return
+     * @return 单个桶信息
      */
     Optional<Bucket> getBucket(String bucketName);
 

@@ -1,7 +1,11 @@
 package com.pearadmin.minio;
 
+import org.hibernate.validator.constraints.URL;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.NotEmpty;
 
 /**
  * Minio 配置属性
@@ -9,23 +13,28 @@ import org.springframework.stereotype.Component;
  * @author lihao3
  * @date 2021/7/23 9:58
  */
+@Validated
 @Component
 @ConfigurationProperties(prefix = "minio")
 public class MinioAutoProperties {
 
     /**
      * 服务地址
-     * */
+     */
+    @NotEmpty(message = "minio服务地址不可为空")
+    @URL(message = "minio服务地址格式错误")
     private String url;
 
     /**
      * 认证账户
      */
+    @NotEmpty(message = "minio认证账户不可为空")
     private String accessKey;
 
     /**
      * 认证密码
      */
+    @NotEmpty(message = "minio认证密码不可为空")
     private String secretKey;
 
     /**
