@@ -17,7 +17,7 @@ import javax.annotation.Resource;
  * Minio 自动配置
  *
  * @author lihao3
- * @Date 2021/7/23 10:28
+ * @version 1.0.0
  */
 @Configuration
 @ConditionalOnClass(MinioClient.class)

@@ -24,7 +24,7 @@ import java.util.Optional;
  * Minio server interface impl
  *
  * @author lihao3
- * @Date 2021/7/23 10:52
+ * @version 1.0.0
  */
 @Service
 public class MinioServerImpl implements MinioServer {

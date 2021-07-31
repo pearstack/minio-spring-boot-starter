@@ -11,7 +11,7 @@ import javax.validation.constraints.NotEmpty;
  * Minio 配置属性
  *
  * @author lihao3
- * @Date 2021/7/23 9:58
+ * @version 1.0.0
  */
 @Validated
 @Component

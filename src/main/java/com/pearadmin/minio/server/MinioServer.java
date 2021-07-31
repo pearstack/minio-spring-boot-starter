@@ -11,7 +11,7 @@ import java.util.Optional;
  * Minio server interface
  *
  * @author lihao3
- * @Date 2021/7/23 10:23
+ * @version 1.0.0
  */
 public interface MinioServer {
 
