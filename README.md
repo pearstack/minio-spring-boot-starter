@@ -3,15 +3,13 @@
 <br/>
 <br/>
 
-<img src="admin/images/logo.png" width="90px" style="margin-top:30px;"/>
+<img src="https://min.io/resources/img/logo.svg" width="90px" style="margin-top:30px;"/>
   <h1 align="center">
     minio-spring-boot-starter
   </h1>
   <h4 align="center">
     基 于 Minio 对 象 存 储 的 Spring Boot 快 速 启 动 器，开 箱 即 用
   </h4> 
-
-     [官 网](http://www.pearadmin.com/)   |   [群聊](https://jq.qq.com/?_wv=1027&k=5OdSmve)   |   [社区](http://forum.pearadmin.com/)|   [文档](http://www.pearadmin.com/doc)
 
 </div>
 
@@ -42,7 +40,7 @@
 
 
 
-# 工程简介
+### 项目介绍
 
 minio和springboot的整合项目, 让你快速上手, 方便使用
 
@@ -54,7 +52,7 @@ minio和springboot的整合项目, 让你快速上手, 方便使用
 
 
 
-# 所用jar包
+### 依赖关系
 
 |  项目名称   |    版本号     | 官网地址                                              |
 | :---------: | :-----------: | ----------------------------------------------------- |
@@ -64,9 +62,9 @@ minio和springboot的整合项目, 让你快速上手, 方便使用
 
 
 
-# 如何使用
+### 如何使用
 
-## maven
+#### maven
 
 在项目的pom.xml中添加
 
@@ -89,7 +87,7 @@ minio和springboot的整合项目, 让你快速上手, 方便使用
 
 
 
-## gradle
+#### gradle
 
 ```groovy
 	allprojects {
