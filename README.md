@@ -1,4 +1,4 @@
-<div align="center">
+<p align="center">
 
     <h1 align="center">
         minio-spring-boot-starter
@@ -10,7 +10,7 @@
 
     [官 网](http://www.pearadmin.com/) | [交流](https://jq.qq.com/?_wv=1027&k=5OdSmve) | [社区](http://forum.pearadmin.com/)
 
-</div>
+</p>
 
 <p align="center">
 	<a target="_blank" href="https://jitpack.io/#com.gitee.pear-admin/minio-spring-boot-starter">
