@@ -47,10 +47,15 @@ public class MinioAutoConfiguration {
             log.info("checkBucket为{}, 开始检测桶是否存在", minioAutoProperties.isCheckBucket());
             String bucketName = minioAutoProperties.getBucket();
             if (!checkBucket(bucketName, minioClient)) {
+                log.info("文件桶[{}]不存在, 开始检查是否可以新建桶", bucketName);
                 if (minioAutoProperties.isCreateBucket()) {
+                    log.info("createBucket为{},开始新建文件桶", minioAutoProperties.isCreateBucket());
                     createBucket(bucketName, minioClient);
                 }
             }
+            log.info("文件桶[{}]已存在, minio客户端连接成功!", bucketName);
+        } else {
+            throw new RuntimeException("桶不存在, 请检查桶名称是否正确或者将checkBucket属性改为false");
         }
         return minioClient;
     }
@@ -68,6 +73,7 @@ public class MinioAutoConfiguration {
     private void createBucket(String bucketName, MinioClient minioClient) {
         try {
             minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
+            log.info("文件桶[{}]新建成功, minio客户端已连接", bucketName);
         } catch (Exception e) {
             throw new RuntimeException("failed to create default bucket", e);
         }

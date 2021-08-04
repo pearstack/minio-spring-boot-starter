@@ -1,7 +1,5 @@
 package com.pearadmin.minio.server;
 
-import cn.hutool.core.io.file.FileNameUtil;
-import cn.hutool.core.util.IdUtil;
 import com.pearadmin.minio.MinioAutoProperties;
 import io.minio.*;
 import io.minio.messages.Bucket;
@@ -319,9 +317,9 @@ public class MinioTemplateImpl implements MinioTemplate {
         // 获取文件前缀,已最后一个点进行分割
         String filePrefix = objectName.substring(0, objectName.lastIndexOf("."));
         // 获取文件后缀,已最后一个点进行分割
-        String fileSuffix = FileNameUtil.getSuffix(objectName);
+        String fileSuffix = objectName.substring(objectName.lastIndexOf(".") + 1);
         // 组成唯一文件名
-        return String.format("%s_%s.%s", filePrefix, IdUtil.getSnowflake().nextId(), fileSuffix);
+        return String.format("%s_%s.%s", filePrefix, System.currentTimeMillis(), fileSuffix);
     }
 
 }

@@ -32,7 +32,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
         <minio.version>7.1.0</minio.version>
-        <hutool-core.version>5.7.5</hutool-core.version>
     </properties>
 
     <dependencies>
@@ -63,13 +62,6 @@
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
             <version>${minio.version}</version>
-        </dependency>
-        <!--hutool 工具包-->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-core</artifactId>
-            <version>${hutool-core.version}</version>
-            <optional>true</optional>
         </dependency>
     </dependencies>
 
