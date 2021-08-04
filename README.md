@@ -3,7 +3,7 @@
 <br/>
 <br/>
 
-<img src="https://min.io/resources/img/logo.svg" width="90px" style="margin-top:30px;"/>
+<img src="https://min.io/resources/img/logo.svg" width="140px" style="margin-top:30px;"/>
   <h1 align="center">
     minio-spring-boot-starter
   </h1>
