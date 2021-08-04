@@ -1,16 +1,20 @@
-<p align="center">
+<div align="center">
 
-    <h1 align="center">
-        minio-spring-boot-starter
-    </h1>
+<br/>
+<br/>
 
-    <h4 align="center">
-        基 于 Minio 对 象 存 储 的 Spring Boot 快 速 启 动 器，开 箱 即 用
-    </h4>
+<img src="admin/images/logo.png" width="90px" style="margin-top:30px;"/>
+  <h1 align="center">
+    minio-spring-boot-starter
+  </h1>
+  <h4 align="center">
+    基 于 Minio 对 象 存 储 的 Spring Boot 快 速 启 动 器，开 箱 即 用
+  </h4> 
 
-    [官 网](http://www.pearadmin.com/) | [交流](https://jq.qq.com/?_wv=1027&k=5OdSmve) | [社区](http://forum.pearadmin.com/)
+     [官 网](http://www.pearadmin.com/)   |   [群聊](https://jq.qq.com/?_wv=1027&k=5OdSmve)   |   [社区](http://forum.pearadmin.com/)|   [文档](http://www.pearadmin.com/doc)
 
-</p>
+</div>
+
 
 <p align="center">
 	<a target="_blank" href="https://jitpack.io/#com.gitee.pear-admin/minio-spring-boot-starter">
