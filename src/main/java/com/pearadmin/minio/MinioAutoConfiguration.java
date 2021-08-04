@@ -1,6 +1,5 @@
 package com.pearadmin.minio;
 
-import com.pearadmin.minio.server.MinioServerImpl;
 import io.minio.BucketExistsArgs;
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;

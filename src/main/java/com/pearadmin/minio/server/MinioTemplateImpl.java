@@ -27,9 +27,9 @@ import java.util.Optional;
  * @version 1.0.0
  */
 @Service
-public class MinioServerImpl implements MinioServer {
+public class MinioTemplateImpl implements MinioTemplate {
 
-    private static final Logger log = LoggerFactory.getLogger(MinioServerImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(MinioTemplateImpl.class);
 
     @Resource
     private MinioClient minioClient;

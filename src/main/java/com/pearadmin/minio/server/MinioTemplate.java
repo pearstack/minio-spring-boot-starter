@@ -13,7 +13,7 @@ import java.util.Optional;
  * @author lihao3
  * @version 1.0.0
  */
-public interface MinioServer {
+public interface MinioTemplate {
 
     /**
      * 判断桶是否存在
