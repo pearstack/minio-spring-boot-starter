@@ -3,6 +3,7 @@ package com.pearadmin.minio.server;
 import io.minio.messages.Bucket;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
@@ -59,6 +60,16 @@ public interface MinioTemplate {
     String putObject(String objectName, byte[] bytes, String contentType);
 
     /**
+     * 上传File文件
+     *
+     * @param objectName  文件名
+     * @param file        文件
+     * @param contentType 文件类型
+     * @return 文件url
+     */
+    String putObject(String objectName, File file, String contentType);
+
+    /**
      * 上传MultipartFile文件到全局默认文件桶下的folder文件夹下
      *
      * @param objectName 文件名称, 如果要带文件夹请用 / 分割, 例如 /help/index.html
@@ -98,6 +109,17 @@ public interface MinioTemplate {
      * @return 文件对应的URL
      */
     String putObject(String bucketName, String objectName, byte[] bytes, String contentType);
+
+    /**
+     * 上传File文件
+     *
+     * @param bucketName  文件桶
+     * @param objectName  文件名
+     * @param file        文件
+     * @param contentType 文件类型, 例如 image/jpeg: jpg图片格式, 详细可看: https://www.runoob.com/http/http-content-type.html
+     * @return 文件对应的URL
+     */
+    String putObject(String bucketName, String objectName, File file, String contentType);
 
     /**
      * 判断文件是否存在

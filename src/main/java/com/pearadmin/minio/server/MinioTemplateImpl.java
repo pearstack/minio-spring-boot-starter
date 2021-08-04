@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
 import java.util.List;
 import java.util.Objects;
@@ -121,6 +119,26 @@ public class MinioTemplateImpl implements MinioTemplate {
         String fileName = getFileName(objectName);
         // 开始上传
         this.putBytes(bucketName, fileName, bytes, contentType);
+        return minioAutoProperties.getUrl() + "/" + bucketName + "/" + fileName;
+    }
+
+    @Override
+    public String putObject(String objectName, File file, String contentType) {
+        // 给文件名添加时间戳防止重复
+        String fileName = getFileName(objectName);
+        // 开始上传
+        this.putFile(minioAutoProperties.getBucket(), fileName, file, contentType);
+        return minioAutoProperties.getUrl() + "/" + minioAutoProperties.getBucket() + "/" + fileName;
+    }
+
+    @Override
+    public String putObject(String bucketName, String objectName, File file, String contentType) {
+        // 先创建桶
+        this.createBucket(bucketName);
+        // 给文件名添加时间戳防止重复
+        String fileName = getFileName(objectName);
+        // 开始上传
+        this.putFile(bucketName, fileName, file, contentType);
         return minioAutoProperties.getUrl() + "/" + bucketName + "/" + fileName;
     }
 
@@ -304,6 +322,30 @@ public class MinioTemplateImpl implements MinioTemplate {
             );
         } catch (Exception e) {
             throw new RuntimeException("文件流上传错误", e);
+        }
+    }
+
+    /**
+     * 上传 file 通用方法
+     *
+     * @param bucketName
+     * @param objectName
+     * @param file
+     * @param contentType
+     */
+    private void putFile(String bucketName, String objectName, File file, String contentType) {
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            minioClient.putObject(
+                    PutObjectArgs.builder()
+                            .bucket(bucketName)
+                            .object(objectName)
+                            .contentType(contentType)
+                            .stream(fileInputStream, fileInputStream.available(), -1)
+                            .build()
+            );
+        } catch (Exception e) {
+            throw new RuntimeException("文件上传错误", e);
         }
     }
 
