@@ -1,6 +1,4 @@
 <div align="center">
-    
-    <br/>
 
     <h1 align="center">
         minio-spring-boot-starter
