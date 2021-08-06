@@ -1,17 +1,12 @@
 <div align="center">
-
-<br/>
-<br/>
-
-<img src="https://min.io/resources/img/logo.svg" width="140px" style="margin-top:30px;"/>
-  <h1 align="center">
-    minio-spring-boot-starter
-  </h1>
-  <h4 align="center">
-    基 于 Minio 对 象 存 储 的 Spring Boot 快 速 启 动 器，开 箱 即 用
-  </h4> 
-
+    <img src="http://www.minio.org.cn/static/picture/logo.svg" width="30%" style="margin-top:30px;"/>
 </div>
+<h1 align="center">
+    minio-spring-boot-starter
+</h1>
+<h4 align="center">
+    基 于 Minio 对 象 存 储 的 Spring Boot 快 速 启 动 器，开 箱 即 用
+</h4> 
 
 
 <p align="center">
@@ -80,6 +75,16 @@
 	</dependency>
 ```
 
+尝鲜版
+
+```xml
+	<dependency>
+	    <groupId>com.gitee.pear-admin</groupId>
+	    <artifactId>minio-spring-boot-starter</artifactId>
+	    <version>master-SNAPSHOT</version>
+	</dependency>
+```
+
 
 
 #### gradle
@@ -96,6 +101,14 @@
 ```groovy
 	dependencies {
 	        implementation 'com.gitee.pear-admin:minio-spring-boot-starter:${last.version}'
+	}
+```
+
+尝鲜版
+
+```groovy
+	dependencies {
+	        implementation 'com.gitee.pear-admin:minio-spring-boot-starter:master-SNAPSHOT'
 	}
 ```
 
