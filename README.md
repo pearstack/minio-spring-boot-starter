@@ -1,5 +1,5 @@
-<div align="center">
-    <img src="https://min.io/resources/img/logo.svg" width="30%" style="margin-top:30px;"/>
+<div align="center" style="margin-top:30px;">
+    <img src="https://min.io/resources/img/logo.svg" width="30%" />
 </div>
 <h1 align="center">
     minio-spring-boot-starter
