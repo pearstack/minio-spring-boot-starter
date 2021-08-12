@@ -100,3 +100,51 @@ Gradle
 ```
 
 ### 快速上手
+
+配置
+
+```
+minio:
+    ## minio 服务地址
+    url: 127.0.0.1:5000
+    ## 账户
+    accessKey: pear-admin
+    ## 密码
+    secretKey: pear-admin
+    ## 桶
+    bucket: default
+    ## 当桶不存在，是否创建
+    createBucket: true
+    ## 启动检测桶，是否存在
+    checkBucket: true
+    ## 连接超时
+    connectTimeout: 6000
+    ## 写入超时
+    writeTimeout: 2000
+    ## 读取超时
+    readTimeout: 2000
+```
+
+使用
+
+```
+
+@RestController
+@RequestMapping("/api/bucket")
+public class BucketController {
+    
+    @Autowired
+    private MinioTemplate minioTemplate;
+    
+    @RequestMapping("/create")
+    public Result create(String bucketName) {
+        if(!minioTemplate.bucketExists(bucketName)) {
+            minioTemplate.createBucket(bucketName);
+            return Result.success("创建成功"); 
+        }
+        return Result.failure("桶，已存在")；
+    }   
+        
+}
+
+```
