@@ -356,12 +356,21 @@ public class MinioTemplateImpl implements MinioTemplate {
      * @return
      */
     private static String getFileName(String objectName) {
-        // 获取文件前缀,已最后一个点进行分割
-        String filePrefix = objectName.substring(0, objectName.lastIndexOf("."));
-        // 获取文件后缀,已最后一个点进行分割
-        String fileSuffix = objectName.substring(objectName.lastIndexOf(".") + 1);
-        // 组成唯一文件名
-        return String.format("%s_%s.%s", filePrefix, System.currentTimeMillis(), fileSuffix);
+        //判断文件最后一个点所在的位置
+        int lastIndexOf = objectName.lastIndexOf(".");
+        if (lastIndexOf == -1) {
+            return String.format("%s_%s", objectName, System.currentTimeMillis());
+        } else {
+            // 获取文件前缀,已最后一个点进行分割
+            String filePrefix = objectName.substring(0, objectName.lastIndexOf("."));
+            // 获取文件后缀,已最后一个点进行分割
+            String fileSuffix = objectName.substring(objectName.lastIndexOf(".") + 1);
+            // 组成唯一文件名
+            return String.format("%s_%s.%s", filePrefix, System.currentTimeMillis(), fileSuffix);
+        }
     }
 
+    public static void main(String[] args) {
+        System.out.println("\".aaaa\".lastIndexOf(\".\") = " + ".aaaa".lastIndexOf("."));
+    }
 }
