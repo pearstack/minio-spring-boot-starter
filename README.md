@@ -1,9 +1,15 @@
+
+<br/>
+<br/>
+
 <div align="center">
     <img src="https://min.io/resources/img/logo.svg" width="30%" style="margin-top:30px;"/>
 </div>
+
 <h1 align="center">
     minio-spring-boot-starter
 </h1>
+
 <h4 align="center">
     基 于 Minio 对 象 存 储 的 Spring Boot 快 速 启 动 器，开 箱 即 用
 </h4> 
@@ -54,7 +60,7 @@
 
 ### 如何使用
 
-#### maven
+Maven
 
 在项目的pom.xml中添加
 
@@ -75,19 +81,8 @@
 	</dependency>
 ```
 
-尝鲜版
 
-```xml
-	<dependency>
-	    <groupId>com.gitee.pear-admin</groupId>
-	    <artifactId>minio-spring-boot-starter</artifactId>
-	    <version>master-SNAPSHOT</version>
-	</dependency>
-```
-
-
-
-#### gradle
+Gradle
 
 ```groovy
 	allprojects {
@@ -104,11 +99,52 @@
 	}
 ```
 
-尝鲜版
+### 快速上手
 
-```groovy
-	dependencies {
-	        implementation 'com.gitee.pear-admin:minio-spring-boot-starter:master-SNAPSHOT'
-	}
+配置
+
+```
+minio:
+    ## minio 服务地址
+    url: 127.0.0.1:5000
+    ## 账户
+    accessKey: pear-admin
+    ## 密码
+    secretKey: pear-admin
+    ## 桶
+    bucket: default
+    ## 当桶不存在，是否创建
+    createBucket: true
+    ## 启动检测桶，是否存在
+    checkBucket: true
+    ## 连接超时
+    connectTimeout: 6000
+    ## 写入超时
+    writeTimeout: 2000
+    ## 读取超时
+    readTimeout: 2000
 ```
 
+使用
+
+```
+
+@RestController
+@RequestMapping("/api/bucket")
+public class BucketController {
+    
+    @Autowired
+    private MinioTemplate minioTemplate;
+    
+    @RequestMapping("/create")
+    public Result create(String bucketName) {
+        if(!minioTemplate.bucketExists(bucketName)) {
+            minioTemplate.createBucket(bucketName);
+            return Result.success("创建成功"); 
+        }
+        return Result.failure("桶，已存在")；
+    }   
+        
+}
+
+```
