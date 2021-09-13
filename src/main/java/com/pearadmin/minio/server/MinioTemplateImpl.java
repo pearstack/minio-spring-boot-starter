@@ -369,8 +369,4 @@ public class MinioTemplateImpl implements MinioTemplate {
             return String.format("%s_%s.%s", filePrefix, System.currentTimeMillis(), fileSuffix);
         }
     }
-
-    public static void main(String[] args) {
-        System.out.println("\".aaaa\".lastIndexOf(\".\") = " + ".aaaa".lastIndexOf("."));
-    }
 }
