@@ -148,3 +148,9 @@ public class BucketController {
 }
 
 ```
+
+### 项目贡献者
+[![Giteye chart](https://chart.giteye.net/gitee/pear-admin/minio-spring-boot-starter/DDPB5C75.png)](https://giteye.net/chart/DDPB5C75)
+
+### 趋势图
+[![Giteye chart](https://chart.giteye.net/gitee/pear-admin/minio-spring-boot-starter/SJRQAG4F.png)](https://giteye.net/chart/SJRQAG4F)
